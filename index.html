@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致我的宝宝 ❤️ 专属表白</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;font-family:"微软雅黑",sans-serif;}
+        body{
+            background: linear-gradient(135deg,#ff6b8b,#ff9a9e,#fad0c4);
+            min-height:100vh;
+            overflow-x:hidden;
+        }
+        /* 爱心飘落动画 */
+        .heart{
+            position:fixed;
+            color:#ff2e63;
+            font-size:25px;
+            animation:fall linear infinite;
+            opacity:0.7;
+            pointer-events:none;
+        }
+        @keyframes fall{
+            0%{top:-10%;transform:rotate(0deg);opacity:1;}
+            100%{top:100%;transform:rotate(360deg);opacity:0;}
+        }
+
+        h1{
+            text-align:center;
+            color:#fff;
+            text-shadow:0 0 15px #ff2e63;
+            font-size:38px;
+            padding:30px 10px;
+            animation:pulse 2s infinite;
+        }
+        @keyframes pulse{
+            0%,100%{transform:scale(1);}
+            50%{transform:scale(1.05);}
+        }
+
+        /* 图片相册炫酷布局 */
+        .img-box{
+            width:90%;
+            max-width:1200px;
+            margin:0 auto 40px;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:20px;
+        }
+        .img-item{
+            border-radius:15px;
+            overflow:hidden;
+            box-shadow:0 8px 25px rgba(255,46,99,0.4);
+            transition:all 0.5s ease;
+            cursor:pointer;
+            aspect-ratio:1/1;
+        }
+        .img-item:hover{
+            transform:translateY(-10px) rotate(3deg);
+            box-shadow:0 15px 40px rgba(255,46,99,0.6);
+        }
+        .img-item img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
+
+        /* 互动按钮区域 */
+        .btn-wrap{
+            text-align:center;
+            margin:40px 0;
+        }
+        .love-btn{
+            padding:18px 50px;
+            font-size:22px;
+            border:none;
+            border-radius:50px;
+            background:#ff2e63;
+            color:#fff;
+            cursor:pointer;
+            margin:0 15px;
+            box-shadow:0 5px 20px rgba(255,46,99,0.5);
+            transition:all 0.3s;
+        }
+        .love-btn:hover{
+            transform:scale(1.1);
+            background:#d81b4a;
+        }
+
+        /* 弹窗表白文字 */
+        .modal{
+            position:fixed;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%) scale(0);
+            background:#fff;
+            padding:40px;
+            border-radius:20px;
+            text-align:center;
+            z-index:999;
+            box-shadow:0 0 50px #ff2e63;
+            transition:all 0.5s ease;
+            max-width:90%;
+        }
+        .modal.show{
+            transform:translate(-50%,-50%) scale(1);
+        }
+        .modal h2{
+            color:#ff2e63;
+            font-size:30px;
+            margin-bottom:20px;
+        }
+        .modal p{
+            font-size:18px;
+            color:#333;
+            line-height:2;
+        }
+        .close-btn{
+            margin-top:25px;
+            padding:10px 30px;
+            background:#ff2e63;
+            color:#fff;
+            border:none;
+            border-radius:30px;
+            cursor:pointer;
+        }
+
+        /* 底部情话 */
+        .text-tip{
+            text-align:center;
+            color:#fff;
+            font-size:20px;
+            padding:20px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- 飘落爱心容器 -->
+    <div id="heartArea"></div>
+
+    <h1>💖 致我最爱的宝宝，满心都是你 💖</h1>
+
+    <!-- 炫酷图片相册（替换src里的图片链接就行） -->
+    <div class="img-box">
+        <div class="img-item"><img src="去除图片多余文字符号 (1).png" alt="我们的合照"></div>
+        <div class="img-item"><img src="去除图片多余文字符号 (2).png" alt="专属温柔"></div>
+        <div class="img-item"><img src="去除图片多余文字符号 (3).png" alt="满眼是你"></div>
+        <div class="img-item"><img src="去除图片多余文字符号 (4).png" alt="余生相伴"></div>
+        <div class="img-item"><img src="去除图片多余文字符号 (5).png" alt="永远爱你"></div>
+        <div class="img-item"><img src="去除图片多余文字符号 (7).png" alt="偏爱专属"></div>
+  <div class="img-item"><img src="1.png" alt="偏爱专属"></div>
+  <div class="img-item"><img src="4.jpg" alt="偏爱专属"></div>
+  <div class="img-item"><img src="5.png" alt="偏爱专属"></div>
+  <div class="img-item"><img src="6.png" alt="偏爱专属"></div>
+
+    </div>
+
+    <!-- 点击互动表白按钮 -->
+    <div class="btn-wrap">
+        <button class="love-btn" onclick="openLove1()">点击收下我的爱意</button>
+        <button class="love-btn" onclick="openLove2()">查看我的真心话</button>
+    </div>
+
+    <!-- 表白弹窗1 -->
+    <div class="modal" id="modal1">
+        <h2>宝宝，我超爱你❤️</h2>
+        <p>从遇见你的那一刻起<br>
+        我的世界全是甜甜的星光<br>
+        想陪你朝朝暮暮，岁岁年年<br>
+        满心欢喜，满眼皆是你</p>
+        <button class="close-btn" onclick="closeModal1()">牢牢记住啦</button>
+    </div>
+
+    <!-- 表白弹窗2 -->
+    <div class="modal" id="modal2">
+        <h2>专属真心话💌</h2>
+        <p>宝宝，你是我的偏爱和例外<br>
+        不管四季更迭，时光流转<br>
+        我都会一直坚定的爱着你<br>
+        宠你、疼你、护你一辈子</p>
+        <button class="close-btn" onclick="closeModal2()">感动啦～</button>
+    </div>
+
+    <div class="text-tip">往后余生，三餐四季，皆是宝宝 ❤️</div>
+
+    <script>
+        // 爱心飘落效果
+        function createHeart(){
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random()*100 + 'vw';
+            heart.style.animationDuration = Math.random()*3+2+'s';
+            document.getElementById('heartArea').appendChild(heart);
+            setTimeout(()=>heart.remove(),5000);
+        }
+        setInterval(createHeart,300);
+
+        // 弹窗控制
+        function openLove1(){
+            document.getElementById('modal1').classList.add('show');
+        }
+        function closeModal1(){
+            document.getElementById('modal1').classList.remove('show');
+        }
+
+        function openLove2(){
+            document.getElementById('modal2').classList.add('show');
+        }
+        function closeModal2(){
+            document.getElementById('modal2').classList.remove('show');
+        }
+    </script>
+</body>
+</html>
